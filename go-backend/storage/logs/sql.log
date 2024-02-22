@@ -1,0 +1,1771 @@
+
+2024/02/16 15:53:11 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 15:53:11 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[2.299ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 15:53:11 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.610ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'gin-server' AND table_name = 'users' AND table_type = 'BASE TABLE'
+
+2024/02/16 15:53:11 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 15:53:11 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.566ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 15:53:11 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT * FROM `users` LIMIT 1
+
+2024/02/16 15:53:11 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.727ms] [34;1m[rows:-][0m SELECT column_name, column_default, is_nullable = 'YES', data_type, character_maximum_length, column_type, column_key, extra, column_comment, numeric_precision, numeric_scale FROM information_schema.columns WHERE table_schema = 'gin-server' AND table_name = 'users' ORDER BY ORDINAL_POSITION
+
+2024/02/16 15:53:11 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[37.379ms] [34;1m[rows:1][0m ALTER TABLE `users` MODIFY COLUMN `user_name` varchar(191) NOT NULL
+
+2024/02/16 15:53:11 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[27.828ms] [34;1m[rows:1][0m ALTER TABLE `users` MODIFY COLUMN `mobile` varchar(191) NOT NULL
+
+2024/02/16 15:53:11 [32m
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 15:53:11 [32m
+[0m[33m[0.503ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 15:53:11 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.957ms] [34;1m[rows:4][0m 
+SELECT
+	TABLE_NAME,
+	COLUMN_NAME,
+	INDEX_NAME,
+	NON_UNIQUE 
+FROM
+	information_schema.STATISTICS 
+WHERE
+	TABLE_SCHEMA = 'gin-server' 
+	AND TABLE_NAME = 'users' 
+ORDER BY
+	INDEX_NAME,
+	SEQ_IN_INDEX
+
+2024/02/16 15:53:11 [32m
+[0m[33m[7.508ms] [34;1m[rows:0][0m DROP INDEX `mobile` ON `users`
+
+2024/02/16 15:53:11 [32m
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 15:53:11 [32m
+[0m[33m[0.578ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 15:53:11 [32m
+[0m[33m[0.502ms] [34;1m[rows:-][0m SELECT count(*) FROM INFORMATION_SCHEMA.table_constraints WHERE constraint_schema = 'gin-server' AND table_name = 'users' AND constraint_name = 'uni_users_mobile'
+
+2024/02/16 15:53:11 [32m
+[0m[33m[16.627ms] [34;1m[rows:0][0m ALTER TABLE `users` ADD CONSTRAINT `uni_users_mobile` UNIQUE (`mobile`)
+
+2024/02/16 15:53:11 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[27.720ms] [34;1m[rows:1][0m ALTER TABLE `users` MODIFY COLUMN `role` bigint NOT NULL
+
+2024/02/16 15:53:11 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 15:53:11 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.716ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 15:53:11 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'gin-server' AND table_name = 'users' AND index_name = 'idx_users_deleted_at'
+
+2024/02/16 16:10:32 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:10:32 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.944ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:10:32 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[1.080ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'gin-server' AND table_name = 'users' AND table_type = 'BASE TABLE'
+
+2024/02/16 16:10:32 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:10:32 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:10:32 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.523ms] [34;1m[rows:-][0m SELECT * FROM `users` LIMIT 1
+
+2024/02/16 16:10:32 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.756ms] [34;1m[rows:-][0m SELECT column_name, column_default, is_nullable = 'YES', data_type, character_maximum_length, column_type, column_key, extra, column_comment, numeric_precision, numeric_scale FROM information_schema.columns WHERE table_schema = 'gin-server' AND table_name = 'users' ORDER BY ORDINAL_POSITION
+
+2024/02/16 16:10:32 [32m
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:10:32 [32m
+[0m[33m[0.565ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:10:32 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.788ms] [34;1m[rows:4][0m 
+SELECT
+	TABLE_NAME,
+	COLUMN_NAME,
+	INDEX_NAME,
+	NON_UNIQUE 
+FROM
+	information_schema.STATISTICS 
+WHERE
+	TABLE_SCHEMA = 'gin-server' 
+	AND TABLE_NAME = 'users' 
+ORDER BY
+	INDEX_NAME,
+	SEQ_IN_INDEX
+
+2024/02/16 16:10:32 [32m
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:10:32 [32m
+[0m[33m[0.000ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:10:32 [32m
+[0m[33m[0.740ms] [34;1m[rows:-][0m SELECT count(*) FROM INFORMATION_SCHEMA.table_constraints WHERE constraint_schema = 'gin-server' AND table_name = 'users' AND constraint_name = 'uni_users_mobile'
+
+2024/02/16 16:10:32 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:10:32 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.562ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:10:32 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'gin-server' AND table_name = 'users' AND index_name = 'idx_users_deleted_at'
+
+2024/02/16 16:10:38 [31;1mF:/Project/my-admin/go-backend/dao/user.go:24 [35;1msql: database is closed
+[0m[33m[0.000ms] [34;1m[rows:0][0m SELECT * FROM `users` WHERE mobile = '13812341234' AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
+
+2024/02/16 16:14:06 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.503ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:14:06 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.865ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:14:06 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.949ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'gin-server' AND table_name = 'users' AND table_type = 'BASE TABLE'
+
+2024/02/16 16:14:06 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:14:06 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.504ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:14:06 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.232ms] [34;1m[rows:-][0m SELECT * FROM `users` LIMIT 1
+
+2024/02/16 16:14:06 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.504ms] [34;1m[rows:-][0m SELECT column_name, column_default, is_nullable = 'YES', data_type, character_maximum_length, column_type, column_key, extra, column_comment, numeric_precision, numeric_scale FROM information_schema.columns WHERE table_schema = 'gin-server' AND table_name = 'users' ORDER BY ORDINAL_POSITION
+
+2024/02/16 16:14:06 [32m
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:14:06 [32m
+[0m[33m[0.000ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:14:06 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.835ms] [34;1m[rows:4][0m 
+SELECT
+	TABLE_NAME,
+	COLUMN_NAME,
+	INDEX_NAME,
+	NON_UNIQUE 
+FROM
+	information_schema.STATISTICS 
+WHERE
+	TABLE_SCHEMA = 'gin-server' 
+	AND TABLE_NAME = 'users' 
+ORDER BY
+	INDEX_NAME,
+	SEQ_IN_INDEX
+
+2024/02/16 16:14:06 [32m
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:14:06 [32m
+[0m[33m[0.692ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:14:06 [32m
+[0m[33m[0.634ms] [34;1m[rows:-][0m SELECT count(*) FROM INFORMATION_SCHEMA.table_constraints WHERE constraint_schema = 'gin-server' AND table_name = 'users' AND constraint_name = 'uni_users_mobile'
+
+2024/02/16 16:14:06 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:14:06 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.504ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:14:06 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.529ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'gin-server' AND table_name = 'users' AND index_name = 'idx_users_deleted_at'
+
+2024/02/16 16:14:13 [31;1mF:/Project/my-admin/go-backend/dao/user.go:24 [35;1msql: database is closed
+[0m[33m[0.000ms] [34;1m[rows:0][0m SELECT * FROM `users` WHERE mobile = '13812341234' AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
+
+2024/02/16 16:15:56 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.503ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:15:56 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.727ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:15:56 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.957ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'gin-server' AND table_name = 'users' AND table_type = 'BASE TABLE'
+
+2024/02/16 16:15:56 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:15:56 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.567ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:15:56 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.504ms] [34;1m[rows:-][0m SELECT * FROM `users` LIMIT 1
+
+2024/02/16 16:15:56 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.504ms] [34;1m[rows:-][0m SELECT column_name, column_default, is_nullable = 'YES', data_type, character_maximum_length, column_type, column_key, extra, column_comment, numeric_precision, numeric_scale FROM information_schema.columns WHERE table_schema = 'gin-server' AND table_name = 'users' ORDER BY ORDINAL_POSITION
+
+2024/02/16 16:15:56 [32m
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:15:56 [32m
+[0m[33m[0.000ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:15:56 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.940ms] [34;1m[rows:4][0m 
+SELECT
+	TABLE_NAME,
+	COLUMN_NAME,
+	INDEX_NAME,
+	NON_UNIQUE 
+FROM
+	information_schema.STATISTICS 
+WHERE
+	TABLE_SCHEMA = 'gin-server' 
+	AND TABLE_NAME = 'users' 
+ORDER BY
+	INDEX_NAME,
+	SEQ_IN_INDEX
+
+2024/02/16 16:15:56 [32m
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:15:56 [32m
+[0m[33m[0.000ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:15:56 [32m
+[0m[33m[0.518ms] [34;1m[rows:-][0m SELECT count(*) FROM INFORMATION_SCHEMA.table_constraints WHERE constraint_schema = 'gin-server' AND table_name = 'users' AND constraint_name = 'uni_users_mobile'
+
+2024/02/16 16:15:56 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:15:56 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:15:56 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.686ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'gin-server' AND table_name = 'users' AND index_name = 'idx_users_deleted_at'
+
+2024/02/16 16:16:02 [31;1mF:/Project/my-admin/go-backend/dao/user.go:24 [35;1msql: database is closed
+[0m[33m[0.000ms] [34;1m[rows:0][0m SELECT * FROM `users` WHERE mobile = '13812341234' AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
+
+2024/02/16 16:16:39 [31;1mF:/Project/my-admin/go-backend/dao/user.go:24 [35;1msql: database is closed
+[0m[33m[0.000ms] [34;1m[rows:0][0m SELECT * FROM `users` WHERE mobile = '13812341234' AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
+
+2024/02/16 16:17:47 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:17:47 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[1.119ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:17:47 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[1.126ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'gin-server' AND table_name = 'users' AND table_type = 'BASE TABLE'
+
+2024/02/16 16:17:47 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:17:47 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.224ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:17:47 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.504ms] [34;1m[rows:-][0m SELECT * FROM `users` LIMIT 1
+
+2024/02/16 16:17:47 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.504ms] [34;1m[rows:-][0m SELECT column_name, column_default, is_nullable = 'YES', data_type, character_maximum_length, column_type, column_key, extra, column_comment, numeric_precision, numeric_scale FROM information_schema.columns WHERE table_schema = 'gin-server' AND table_name = 'users' ORDER BY ORDINAL_POSITION
+
+2024/02/16 16:17:47 [32m
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:17:47 [32m
+[0m[33m[0.000ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:17:47 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.941ms] [34;1m[rows:4][0m 
+SELECT
+	TABLE_NAME,
+	COLUMN_NAME,
+	INDEX_NAME,
+	NON_UNIQUE 
+FROM
+	information_schema.STATISTICS 
+WHERE
+	TABLE_SCHEMA = 'gin-server' 
+	AND TABLE_NAME = 'users' 
+ORDER BY
+	INDEX_NAME,
+	SEQ_IN_INDEX
+
+2024/02/16 16:17:47 [32m
+[0m[33m[0.504ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:17:47 [32m
+[0m[33m[0.232ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:17:47 [32m
+[0m[33m[0.504ms] [34;1m[rows:-][0m SELECT count(*) FROM INFORMATION_SCHEMA.table_constraints WHERE constraint_schema = 'gin-server' AND table_name = 'users' AND constraint_name = 'uni_users_mobile'
+
+2024/02/16 16:17:47 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:17:47 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:17:47 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.683ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'gin-server' AND table_name = 'users' AND index_name = 'idx_users_deleted_at'
+
+2024/02/16 16:17:59 [31;1mF:/Project/my-admin/go-backend/dao/user.go:24 [35;1msql: database is closed
+[0m[33m[0.000ms] [34;1m[rows:0][0m SELECT * FROM `users` WHERE mobile = '13812341234' AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
+
+2024/02/16 16:20:33 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:20:33 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[1.199ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:20:33 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[1.159ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'gin-server' AND table_name = 'users' AND table_type = 'BASE TABLE'
+
+2024/02/16 16:20:33 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:20:33 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.695ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:20:33 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.505ms] [34;1m[rows:-][0m SELECT * FROM `users` LIMIT 1
+
+2024/02/16 16:20:33 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.504ms] [34;1m[rows:-][0m SELECT column_name, column_default, is_nullable = 'YES', data_type, character_maximum_length, column_type, column_key, extra, column_comment, numeric_precision, numeric_scale FROM information_schema.columns WHERE table_schema = 'gin-server' AND table_name = 'users' ORDER BY ORDINAL_POSITION
+
+2024/02/16 16:20:33 [32m
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:20:33 [32m
+[0m[33m[0.562ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:20:33 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.848ms] [34;1m[rows:4][0m 
+SELECT
+	TABLE_NAME,
+	COLUMN_NAME,
+	INDEX_NAME,
+	NON_UNIQUE 
+FROM
+	information_schema.STATISTICS 
+WHERE
+	TABLE_SCHEMA = 'gin-server' 
+	AND TABLE_NAME = 'users' 
+ORDER BY
+	INDEX_NAME,
+	SEQ_IN_INDEX
+
+2024/02/16 16:20:33 [32m
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:20:33 [32m
+[0m[33m[0.000ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:20:33 [32m
+[0m[33m[0.426ms] [34;1m[rows:-][0m SELECT count(*) FROM INFORMATION_SCHEMA.table_constraints WHERE constraint_schema = 'gin-server' AND table_name = 'users' AND constraint_name = 'uni_users_mobile'
+
+2024/02/16 16:20:33 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:20:33 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.628ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:20:33 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.503ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'gin-server' AND table_name = 'users' AND index_name = 'idx_users_deleted_at'
+
+2024/02/16 16:20:40 [31;1mF:/Project/my-admin/go-backend/dao/user.go:24 [35;1msql: database is closed
+[0m[33m[0.000ms] [34;1m[rows:0][0m SELECT * FROM `users` WHERE mobile = '13812341234' AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
+
+2024/02/16 16:21:55 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:21:55 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[1.053ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:21:55 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.569ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'gin-server' AND table_name = 'users' AND table_type = 'BASE TABLE'
+
+2024/02/16 16:21:55 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.503ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:21:55 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:21:55 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.503ms] [34;1m[rows:-][0m SELECT * FROM `users` LIMIT 1
+
+2024/02/16 16:21:55 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.505ms] [34;1m[rows:-][0m SELECT column_name, column_default, is_nullable = 'YES', data_type, character_maximum_length, column_type, column_key, extra, column_comment, numeric_precision, numeric_scale FROM information_schema.columns WHERE table_schema = 'gin-server' AND table_name = 'users' ORDER BY ORDINAL_POSITION
+
+2024/02/16 16:21:55 [32m
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:21:55 [32m
+[0m[33m[0.666ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:21:55 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.503ms] [34;1m[rows:4][0m 
+SELECT
+	TABLE_NAME,
+	COLUMN_NAME,
+	INDEX_NAME,
+	NON_UNIQUE 
+FROM
+	information_schema.STATISTICS 
+WHERE
+	TABLE_SCHEMA = 'gin-server' 
+	AND TABLE_NAME = 'users' 
+ORDER BY
+	INDEX_NAME,
+	SEQ_IN_INDEX
+
+2024/02/16 16:21:55 [32m
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:21:55 [32m
+[0m[33m[0.588ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:21:55 [32m
+[0m[33m[0.504ms] [34;1m[rows:-][0m SELECT count(*) FROM INFORMATION_SCHEMA.table_constraints WHERE constraint_schema = 'gin-server' AND table_name = 'users' AND constraint_name = 'uni_users_mobile'
+
+2024/02/16 16:21:55 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:21:55 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.505ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:21:55 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.287ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'gin-server' AND table_name = 'users' AND index_name = 'idx_users_deleted_at'
+
+2024/02/16 16:21:58 [32mF:/Project/my-admin/go-backend/dao/user.go:24
+[0m[33m[2.003ms] [34;1m[rows:1][0m SELECT * FROM `users` WHERE mobile = '13812341234' AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
+
+2024/02/16 16:32:56 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:32:56 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.658ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:32:56 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[1.055ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'gin-server' AND table_name = 'users' AND table_type = 'BASE TABLE'
+
+2024/02/16 16:32:56 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.505ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:32:56 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.069ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:32:56 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.503ms] [34;1m[rows:-][0m SELECT * FROM `users` LIMIT 1
+
+2024/02/16 16:32:56 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.572ms] [34;1m[rows:-][0m SELECT column_name, column_default, is_nullable = 'YES', data_type, character_maximum_length, column_type, column_key, extra, column_comment, numeric_precision, numeric_scale FROM information_schema.columns WHERE table_schema = 'gin-server' AND table_name = 'users' ORDER BY ORDINAL_POSITION
+
+2024/02/16 16:32:56 [32m
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:32:56 [32m
+[0m[33m[0.522ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:32:56 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.788ms] [34;1m[rows:4][0m 
+SELECT
+	TABLE_NAME,
+	COLUMN_NAME,
+	INDEX_NAME,
+	NON_UNIQUE 
+FROM
+	information_schema.STATISTICS 
+WHERE
+	TABLE_SCHEMA = 'gin-server' 
+	AND TABLE_NAME = 'users' 
+ORDER BY
+	INDEX_NAME,
+	SEQ_IN_INDEX
+
+2024/02/16 16:32:56 [32m
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:32:56 [32m
+[0m[33m[0.000ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:32:56 [32m
+[0m[33m[0.839ms] [34;1m[rows:-][0m SELECT count(*) FROM INFORMATION_SCHEMA.table_constraints WHERE constraint_schema = 'gin-server' AND table_name = 'users' AND constraint_name = 'uni_users_mobile'
+
+2024/02/16 16:32:56 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:32:56 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.671ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:32:56 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'gin-server' AND table_name = 'users' AND index_name = 'idx_users_deleted_at'
+
+2024/02/16 16:33:00 [32mF:/Project/my-admin/go-backend/dao/user.go:24
+[0m[33m[0.648ms] [34;1m[rows:1][0m SELECT * FROM `users` WHERE mobile = '13812341234' AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
+
+2024/02/16 16:33:44 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:33:44 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[1.060ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:33:44 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.784ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'gin-server' AND table_name = 'users' AND table_type = 'BASE TABLE'
+
+2024/02/16 16:33:44 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:33:44 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.504ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:33:44 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.278ms] [34;1m[rows:-][0m SELECT * FROM `users` LIMIT 1
+
+2024/02/16 16:33:44 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.744ms] [34;1m[rows:-][0m SELECT column_name, column_default, is_nullable = 'YES', data_type, character_maximum_length, column_type, column_key, extra, column_comment, numeric_precision, numeric_scale FROM information_schema.columns WHERE table_schema = 'gin-server' AND table_name = 'users' ORDER BY ORDINAL_POSITION
+
+2024/02/16 16:33:44 [32m
+[0m[33m[0.505ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:33:44 [32m
+[0m[33m[0.355ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:33:44 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.504ms] [34;1m[rows:4][0m 
+SELECT
+	TABLE_NAME,
+	COLUMN_NAME,
+	INDEX_NAME,
+	NON_UNIQUE 
+FROM
+	information_schema.STATISTICS 
+WHERE
+	TABLE_SCHEMA = 'gin-server' 
+	AND TABLE_NAME = 'users' 
+ORDER BY
+	INDEX_NAME,
+	SEQ_IN_INDEX
+
+2024/02/16 16:33:44 [32m
+[0m[33m[0.629ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:33:44 [32m
+[0m[33m[0.000ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:33:44 [32m
+[0m[33m[0.709ms] [34;1m[rows:-][0m SELECT count(*) FROM INFORMATION_SCHEMA.table_constraints WHERE constraint_schema = 'gin-server' AND table_name = 'users' AND constraint_name = 'uni_users_mobile'
+
+2024/02/16 16:33:44 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:33:44 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.777ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:33:44 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.504ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'gin-server' AND table_name = 'users' AND index_name = 'idx_users_deleted_at'
+
+2024/02/16 16:33:47 [32mF:/Project/my-admin/go-backend/dao/user.go:24
+[0m[33m[1.049ms] [34;1m[rows:1][0m SELECT * FROM `users` WHERE mobile = '13812341234' AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
+
+2024/02/16 16:34:38 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:34:38 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[1.211ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:34:38 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.504ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'gin-server' AND table_name = 'users' AND table_type = 'BASE TABLE'
+
+2024/02/16 16:34:38 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:34:38 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:34:38 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.503ms] [34;1m[rows:-][0m SELECT * FROM `users` LIMIT 1
+
+2024/02/16 16:34:38 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.502ms] [34;1m[rows:-][0m SELECT column_name, column_default, is_nullable = 'YES', data_type, character_maximum_length, column_type, column_key, extra, column_comment, numeric_precision, numeric_scale FROM information_schema.columns WHERE table_schema = 'gin-server' AND table_name = 'users' ORDER BY ORDINAL_POSITION
+
+2024/02/16 16:34:38 [32m
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:34:38 [32m
+[0m[33m[0.634ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:34:38 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.662ms] [34;1m[rows:4][0m 
+SELECT
+	TABLE_NAME,
+	COLUMN_NAME,
+	INDEX_NAME,
+	NON_UNIQUE 
+FROM
+	information_schema.STATISTICS 
+WHERE
+	TABLE_SCHEMA = 'gin-server' 
+	AND TABLE_NAME = 'users' 
+ORDER BY
+	INDEX_NAME,
+	SEQ_IN_INDEX
+
+2024/02/16 16:34:38 [32m
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:34:38 [32m
+[0m[33m[0.622ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:34:38 [32m
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT count(*) FROM INFORMATION_SCHEMA.table_constraints WHERE constraint_schema = 'gin-server' AND table_name = 'users' AND constraint_name = 'uni_users_mobile'
+
+2024/02/16 16:34:38 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:34:38 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:34:38 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.682ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'gin-server' AND table_name = 'users' AND index_name = 'idx_users_deleted_at'
+
+2024/02/16 16:34:45 [32mF:/Project/my-admin/go-backend/dao/user.go:25
+[0m[33m[0.547ms] [34;1m[rows:1][0m SELECT * FROM `users` WHERE mobile = '13812341234' AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
+
+2024/02/16 16:35:25 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:35:25 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.645ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:35:25 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.832ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'gin-server' AND table_name = 'users' AND table_type = 'BASE TABLE'
+
+2024/02/16 16:35:25 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:35:25 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.504ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:35:25 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.648ms] [34;1m[rows:-][0m SELECT * FROM `users` LIMIT 1
+
+2024/02/16 16:35:25 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.503ms] [34;1m[rows:-][0m SELECT column_name, column_default, is_nullable = 'YES', data_type, character_maximum_length, column_type, column_key, extra, column_comment, numeric_precision, numeric_scale FROM information_schema.columns WHERE table_schema = 'gin-server' AND table_name = 'users' ORDER BY ORDINAL_POSITION
+
+2024/02/16 16:35:25 [32m
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:35:25 [32m
+[0m[33m[0.000ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:35:25 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.685ms] [34;1m[rows:4][0m 
+SELECT
+	TABLE_NAME,
+	COLUMN_NAME,
+	INDEX_NAME,
+	NON_UNIQUE 
+FROM
+	information_schema.STATISTICS 
+WHERE
+	TABLE_SCHEMA = 'gin-server' 
+	AND TABLE_NAME = 'users' 
+ORDER BY
+	INDEX_NAME,
+	SEQ_IN_INDEX
+
+2024/02/16 16:35:25 [32m
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:35:25 [32m
+[0m[33m[0.503ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:35:25 [32m
+[0m[33m[0.545ms] [34;1m[rows:-][0m SELECT count(*) FROM INFORMATION_SCHEMA.table_constraints WHERE constraint_schema = 'gin-server' AND table_name = 'users' AND constraint_name = 'uni_users_mobile'
+
+2024/02/16 16:35:25 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:35:25 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:35:25 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.598ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'gin-server' AND table_name = 'users' AND index_name = 'idx_users_deleted_at'
+
+2024/02/16 16:35:31 [32mF:/Project/my-admin/go-backend/dao/user.go:25
+[0m[33m[0.504ms] [34;1m[rows:1][0m SELECT * FROM `users` WHERE mobile = '13812341234' AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
+
+2024/02/16 16:36:10 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:36:10 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[1.052ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:36:10 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.505ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'gin-server' AND table_name = 'users' AND table_type = 'BASE TABLE'
+
+2024/02/16 16:36:10 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:36:10 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:36:10 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.529ms] [34;1m[rows:-][0m SELECT * FROM `users` LIMIT 1
+
+2024/02/16 16:36:10 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.521ms] [34;1m[rows:-][0m SELECT column_name, column_default, is_nullable = 'YES', data_type, character_maximum_length, column_type, column_key, extra, column_comment, numeric_precision, numeric_scale FROM information_schema.columns WHERE table_schema = 'gin-server' AND table_name = 'users' ORDER BY ORDINAL_POSITION
+
+2024/02/16 16:36:10 [32m
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:36:10 [32m
+[0m[33m[0.000ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:36:10 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.517ms] [34;1m[rows:4][0m 
+SELECT
+	TABLE_NAME,
+	COLUMN_NAME,
+	INDEX_NAME,
+	NON_UNIQUE 
+FROM
+	information_schema.STATISTICS 
+WHERE
+	TABLE_SCHEMA = 'gin-server' 
+	AND TABLE_NAME = 'users' 
+ORDER BY
+	INDEX_NAME,
+	SEQ_IN_INDEX
+
+2024/02/16 16:36:10 [32m
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:36:10 [32m
+[0m[33m[0.000ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:36:10 [32m
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT count(*) FROM INFORMATION_SCHEMA.table_constraints WHERE constraint_schema = 'gin-server' AND table_name = 'users' AND constraint_name = 'uni_users_mobile'
+
+2024/02/16 16:36:10 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:36:10 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:36:10 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'gin-server' AND table_name = 'users' AND index_name = 'idx_users_deleted_at'
+
+2024/02/16 16:36:13 [32mF:/Project/my-admin/go-backend/dao/user.go:25
+[0m[33m[0.000ms] [34;1m[rows:1][0m SELECT * FROM `users` WHERE mobile = '13812341234' AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
+
+2024/02/16 16:42:46 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:42:46 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.832ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:42:46 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[1.435ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'gin-server' AND table_name = 'users' AND table_type = 'BASE TABLE'
+
+2024/02/16 16:42:46 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.387ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:42:46 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.792ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:42:46 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT * FROM `users` LIMIT 1
+
+2024/02/16 16:42:46 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.784ms] [34;1m[rows:-][0m SELECT column_name, column_default, is_nullable = 'YES', data_type, character_maximum_length, column_type, column_key, extra, column_comment, numeric_precision, numeric_scale FROM information_schema.columns WHERE table_schema = 'gin-server' AND table_name = 'users' ORDER BY ORDINAL_POSITION
+
+2024/02/16 16:42:46 [32m
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:42:46 [32m
+[0m[33m[0.535ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:42:46 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.518ms] [34;1m[rows:4][0m 
+SELECT
+	TABLE_NAME,
+	COLUMN_NAME,
+	INDEX_NAME,
+	NON_UNIQUE 
+FROM
+	information_schema.STATISTICS 
+WHERE
+	TABLE_SCHEMA = 'gin-server' 
+	AND TABLE_NAME = 'users' 
+ORDER BY
+	INDEX_NAME,
+	SEQ_IN_INDEX
+
+2024/02/16 16:42:46 [32m
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:42:46 [32m
+[0m[33m[0.000ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:42:46 [32m
+[0m[33m[0.904ms] [34;1m[rows:-][0m SELECT count(*) FROM INFORMATION_SCHEMA.table_constraints WHERE constraint_schema = 'gin-server' AND table_name = 'users' AND constraint_name = 'uni_users_mobile'
+
+2024/02/16 16:42:46 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/16 16:42:46 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/16 16:42:46 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.353ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'gin-server' AND table_name = 'users' AND index_name = 'idx_users_deleted_at'
+
+2024/02/16 16:42:51 [32mF:/Project/my-admin/go-backend/dao/user.go:24
+[0m[33m[0.485ms] [34;1m[rows:1][0m SELECT * FROM `users` WHERE mobile = '13812341234' AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
+
+2024/02/19 18:35:47 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.550ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/19 18:35:47 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[2.639ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/19 18:35:47 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[1.398ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'gin-server' AND table_name = 'users' AND table_type = 'BASE TABLE'
+
+2024/02/19 18:35:47 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/19 18:35:47 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/19 18:35:47 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[3.263ms] [34;1m[rows:-][0m SELECT * FROM `users` LIMIT 1
+
+2024/02/19 18:35:47 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[1.112ms] [34;1m[rows:-][0m SELECT column_name, column_default, is_nullable = 'YES', data_type, character_maximum_length, column_type, column_key, extra, column_comment, numeric_precision, numeric_scale FROM information_schema.columns WHERE table_schema = 'gin-server' AND table_name = 'users' ORDER BY ORDINAL_POSITION
+
+2024/02/19 18:35:47 [32m
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/19 18:35:47 [32m
+[0m[33m[0.503ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/19 18:35:47 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.731ms] [34;1m[rows:4][0m 
+SELECT
+	TABLE_NAME,
+	COLUMN_NAME,
+	INDEX_NAME,
+	NON_UNIQUE 
+FROM
+	information_schema.STATISTICS 
+WHERE
+	TABLE_SCHEMA = 'gin-server' 
+	AND TABLE_NAME = 'users' 
+ORDER BY
+	INDEX_NAME,
+	SEQ_IN_INDEX
+
+2024/02/19 18:35:47 [32m
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/19 18:35:47 [32m
+[0m[33m[0.594ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/19 18:35:47 [32m
+[0m[33m[0.745ms] [34;1m[rows:-][0m SELECT count(*) FROM INFORMATION_SCHEMA.table_constraints WHERE constraint_schema = 'gin-server' AND table_name = 'users' AND constraint_name = 'uni_users_mobile'
+
+2024/02/19 18:35:47 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/19 18:35:47 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.284ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/19 18:35:47 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.299ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'gin-server' AND table_name = 'users' AND index_name = 'idx_users_deleted_at'
+
+2024/02/19 18:35:47 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/19 18:35:47 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.597ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/19 18:35:47 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.679ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'gin-server' AND table_name = 'media' AND table_type = 'BASE TABLE'
+
+2024/02/19 18:35:47 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[17.459ms] [34;1m[rows:0][0m CREATE TABLE `media` (`disk_type` varchar(20) NOT NULL COMMENT '存储类型',`src_type` tinyint NOT NULL COMMENT '链接类型 1相对路径 2外链',`src` varchar(191) NOT NULL COMMENT '资源链接',`id` bigint unsigned AUTO_INCREMENT,`created_at` datetime NULL,`updated_at` datetime NULL,`deleted_at` datetime NULL,PRIMARY KEY (`id`),INDEX `idx_media_disk_type` (`disk_type`),INDEX `idx_media_deleted_at` (`deleted_at`))
+
+2024/02/19 18:37:07 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.521ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/19 18:37:07 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.958ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/19 18:37:07 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[1.028ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'gin-server' AND table_name = 'users' AND table_type = 'BASE TABLE'
+
+2024/02/19 18:37:07 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/19 18:37:07 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/19 18:37:07 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.620ms] [34;1m[rows:-][0m SELECT * FROM `users` LIMIT 1
+
+2024/02/19 18:37:07 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.504ms] [34;1m[rows:-][0m SELECT column_name, column_default, is_nullable = 'YES', data_type, character_maximum_length, column_type, column_key, extra, column_comment, numeric_precision, numeric_scale FROM information_schema.columns WHERE table_schema = 'gin-server' AND table_name = 'users' ORDER BY ORDINAL_POSITION
+
+2024/02/19 18:37:07 [32m
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/19 18:37:07 [32m
+[0m[33m[0.504ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/19 18:37:07 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[1.243ms] [34;1m[rows:4][0m 
+SELECT
+	TABLE_NAME,
+	COLUMN_NAME,
+	INDEX_NAME,
+	NON_UNIQUE 
+FROM
+	information_schema.STATISTICS 
+WHERE
+	TABLE_SCHEMA = 'gin-server' 
+	AND TABLE_NAME = 'users' 
+ORDER BY
+	INDEX_NAME,
+	SEQ_IN_INDEX
+
+2024/02/19 18:37:07 [32m
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/19 18:37:07 [32m
+[0m[33m[0.622ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/19 18:37:07 [32m
+[0m[33m[0.543ms] [34;1m[rows:-][0m SELECT count(*) FROM INFORMATION_SCHEMA.table_constraints WHERE constraint_schema = 'gin-server' AND table_name = 'users' AND constraint_name = 'uni_users_mobile'
+
+2024/02/19 18:37:07 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/19 18:37:07 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.598ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/19 18:37:07 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.502ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'gin-server' AND table_name = 'users' AND index_name = 'idx_users_deleted_at'
+
+2024/02/19 18:37:07 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/19 18:37:07 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/19 18:37:07 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.626ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'gin-server' AND table_name = 'media' AND table_type = 'BASE TABLE'
+
+2024/02/19 18:37:07 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/19 18:37:07 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.503ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/19 18:37:07 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[1.041ms] [34;1m[rows:-][0m SELECT * FROM `media` LIMIT 1
+
+2024/02/19 18:37:07 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.505ms] [34;1m[rows:-][0m SELECT column_name, column_default, is_nullable = 'YES', data_type, character_maximum_length, column_type, column_key, extra, column_comment, numeric_precision, numeric_scale FROM information_schema.columns WHERE table_schema = 'gin-server' AND table_name = 'media' ORDER BY ORDINAL_POSITION
+
+2024/02/19 18:37:07 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/19 18:37:07 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/19 18:37:07 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.672ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'gin-server' AND table_name = 'media' AND index_name = 'idx_media_disk_type'
+
+2024/02/19 18:37:07 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/19 18:37:07 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.504ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/19 18:37:07 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'gin-server' AND table_name = 'media' AND index_name = 'idx_media_deleted_at'
+
+2024/02/19 18:38:40 [32mF:/Project/my-admin/go-backend/dao/user.go:24
+[0m[33m[0.682ms] [34;1m[rows:1][0m SELECT * FROM `users` WHERE mobile = '13812341234' AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
+
+2024/02/22 11:12:40 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.497ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 11:12:40 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[3.213ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 11:12:40 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[2.267ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'gin-server' AND table_name = 'users' AND table_type = 'BASE TABLE'
+
+2024/02/22 11:12:40 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 11:12:40 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.644ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 11:12:40 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.556ms] [34;1m[rows:-][0m SELECT * FROM `users` LIMIT 1
+
+2024/02/22 11:12:40 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[1.415ms] [34;1m[rows:-][0m SELECT column_name, column_default, is_nullable = 'YES', data_type, character_maximum_length, column_type, column_key, extra, column_comment, numeric_precision, numeric_scale FROM information_schema.columns WHERE table_schema = 'gin-server' AND table_name = 'users' ORDER BY ORDINAL_POSITION
+
+2024/02/22 11:12:40 [32m
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 11:12:40 [32m
+[0m[33m[0.616ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 11:12:40 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[1.679ms] [34;1m[rows:4][0m 
+SELECT
+	TABLE_NAME,
+	COLUMN_NAME,
+	INDEX_NAME,
+	NON_UNIQUE 
+FROM
+	information_schema.STATISTICS 
+WHERE
+	TABLE_SCHEMA = 'gin-server' 
+	AND TABLE_NAME = 'users' 
+ORDER BY
+	INDEX_NAME,
+	SEQ_IN_INDEX
+
+2024/02/22 11:12:40 [32m
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 11:12:40 [32m
+[0m[33m[0.567ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 11:12:40 [32m
+[0m[33m[1.269ms] [34;1m[rows:-][0m SELECT count(*) FROM INFORMATION_SCHEMA.table_constraints WHERE constraint_schema = 'gin-server' AND table_name = 'users' AND constraint_name = 'uni_users_mobile'
+
+2024/02/22 11:12:40 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 11:12:40 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 11:12:40 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.767ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'gin-server' AND table_name = 'users' AND index_name = 'idx_users_deleted_at'
+
+2024/02/22 11:12:40 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 11:12:40 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.612ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 11:12:40 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'gin-server' AND table_name = 'media' AND table_type = 'BASE TABLE'
+
+2024/02/22 11:12:40 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 11:12:40 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 11:12:40 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.502ms] [34;1m[rows:-][0m SELECT * FROM `media` LIMIT 1
+
+2024/02/22 11:12:40 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.503ms] [34;1m[rows:-][0m SELECT column_name, column_default, is_nullable = 'YES', data_type, character_maximum_length, column_type, column_key, extra, column_comment, numeric_precision, numeric_scale FROM information_schema.columns WHERE table_schema = 'gin-server' AND table_name = 'media' ORDER BY ORDINAL_POSITION
+
+2024/02/22 11:12:40 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 11:12:40 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 11:12:40 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.609ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'gin-server' AND table_name = 'media' AND index_name = 'idx_media_disk_type'
+
+2024/02/22 11:12:40 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 11:12:40 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 11:12:40 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.503ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'gin-server' AND table_name = 'media' AND index_name = 'idx_media_deleted_at'
+
+2024/02/22 11:14:50 [32mF:/Project/my-admin/go-backend/dao/user.go:24
+[0m[33m[1.081ms] [34;1m[rows:1][0m SELECT * FROM `users` WHERE mobile = '13812341234' AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
+
+2024/02/22 11:16:52 [32mF:/Project/my-admin/go-backend/dao/user.go:24
+[0m[33m[0.876ms] [34;1m[rows:1][0m SELECT * FROM `users` WHERE mobile = '13812341234' AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
+
+2024/02/22 11:17:15 [32mF:/Project/my-admin/go-backend/dao/user.go:24
+[0m[33m[0.521ms] [34;1m[rows:1][0m SELECT * FROM `users` WHERE mobile = '13812341234' AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
+
+2024/02/22 11:17:47 [32mF:/Project/my-admin/go-backend/dao/user.go:24
+[0m[33m[0.000ms] [34;1m[rows:1][0m SELECT * FROM `users` WHERE mobile = '13812341234' AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
+
+2024/02/22 11:18:20 [32mF:/Project/my-admin/go-backend/dao/user.go:24
+[0m[33m[0.654ms] [34;1m[rows:1][0m SELECT * FROM `users` WHERE mobile = '13812341234' AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
+
+2024/02/22 11:18:50 [32mF:/Project/my-admin/go-backend/dao/user.go:24
+[0m[33m[1.282ms] [34;1m[rows:1][0m SELECT * FROM `users` WHERE mobile = '13812341234' AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
+
+2024/02/22 11:19:51 [32mF:/Project/my-admin/go-backend/dao/user.go:24
+[0m[33m[1.537ms] [34;1m[rows:1][0m SELECT * FROM `users` WHERE mobile = '13812341234' AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
+
+2024/02/22 11:21:42 [32mF:/Project/my-admin/go-backend/dao/user.go:24
+[0m[33m[1.175ms] [34;1m[rows:1][0m SELECT * FROM `users` WHERE mobile = '13812341234' AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
+
+2024/02/22 11:22:38 [32mF:/Project/my-admin/go-backend/dao/user.go:24
+[0m[33m[0.722ms] [34;1m[rows:1][0m SELECT * FROM `users` WHERE mobile = '13812341234' AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
+
+2024/02/22 14:58:03 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 14:58:03 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[2.883ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 14:58:03 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[2.498ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'gin-server' AND table_name = 'users' AND table_type = 'BASE TABLE'
+
+2024/02/22 14:58:03 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 14:58:03 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.683ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 14:58:03 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.502ms] [34;1m[rows:-][0m SELECT * FROM `users` LIMIT 1
+
+2024/02/22 14:58:03 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[1.220ms] [34;1m[rows:-][0m SELECT column_name, column_default, is_nullable = 'YES', data_type, character_maximum_length, column_type, column_key, extra, column_comment, numeric_precision, numeric_scale FROM information_schema.columns WHERE table_schema = 'gin-server' AND table_name = 'users' ORDER BY ORDINAL_POSITION
+
+2024/02/22 14:58:03 [32m
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 14:58:03 [32m
+[0m[33m[0.502ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 14:58:03 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[1.408ms] [34;1m[rows:4][0m 
+SELECT
+	TABLE_NAME,
+	COLUMN_NAME,
+	INDEX_NAME,
+	NON_UNIQUE 
+FROM
+	information_schema.STATISTICS 
+WHERE
+	TABLE_SCHEMA = 'gin-server' 
+	AND TABLE_NAME = 'users' 
+ORDER BY
+	INDEX_NAME,
+	SEQ_IN_INDEX
+
+2024/02/22 14:58:03 [32m
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 14:58:03 [32m
+[0m[33m[0.503ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 14:58:03 [32m
+[0m[33m[1.014ms] [34;1m[rows:-][0m SELECT count(*) FROM INFORMATION_SCHEMA.table_constraints WHERE constraint_schema = 'gin-server' AND table_name = 'users' AND constraint_name = 'uni_users_mobile'
+
+2024/02/22 14:58:03 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 14:58:03 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.683ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 14:58:03 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.502ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'gin-server' AND table_name = 'users' AND index_name = 'idx_users_deleted_at'
+
+2024/02/22 14:58:03 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 14:58:03 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.502ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 14:58:03 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'gin-server' AND table_name = 'media' AND table_type = 'BASE TABLE'
+
+2024/02/22 14:58:03 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.513ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 14:58:03 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.122ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 14:58:03 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.707ms] [34;1m[rows:-][0m SELECT * FROM `media` LIMIT 1
+
+2024/02/22 14:58:03 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.502ms] [34;1m[rows:-][0m SELECT column_name, column_default, is_nullable = 'YES', data_type, character_maximum_length, column_type, column_key, extra, column_comment, numeric_precision, numeric_scale FROM information_schema.columns WHERE table_schema = 'gin-server' AND table_name = 'media' ORDER BY ORDINAL_POSITION
+
+2024/02/22 14:58:03 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 14:58:03 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 14:58:03 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.758ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'gin-server' AND table_name = 'media' AND index_name = 'idx_media_disk_type'
+
+2024/02/22 14:58:03 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 14:58:03 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.682ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 14:58:03 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'gin-server' AND table_name = 'media' AND index_name = 'idx_media_deleted_at'
+
+2024/02/22 15:11:35 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 15:11:35 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[1.257ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 15:11:35 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[1.139ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'gin-server' AND table_name = 'users' AND table_type = 'BASE TABLE'
+
+2024/02/22 15:11:35 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 15:11:35 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 15:11:35 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.631ms] [34;1m[rows:-][0m SELECT * FROM `users` LIMIT 1
+
+2024/02/22 15:11:35 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.520ms] [34;1m[rows:-][0m SELECT column_name, column_default, is_nullable = 'YES', data_type, character_maximum_length, column_type, column_key, extra, column_comment, numeric_precision, numeric_scale FROM information_schema.columns WHERE table_schema = 'gin-server' AND table_name = 'users' ORDER BY ORDINAL_POSITION
+
+2024/02/22 15:11:35 [32m
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 15:11:35 [32m
+[0m[33m[0.000ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 15:11:35 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.993ms] [34;1m[rows:4][0m 
+SELECT
+	TABLE_NAME,
+	COLUMN_NAME,
+	INDEX_NAME,
+	NON_UNIQUE 
+FROM
+	information_schema.STATISTICS 
+WHERE
+	TABLE_SCHEMA = 'gin-server' 
+	AND TABLE_NAME = 'users' 
+ORDER BY
+	INDEX_NAME,
+	SEQ_IN_INDEX
+
+2024/02/22 15:11:35 [32m
+[0m[33m[0.528ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 15:11:35 [32m
+[0m[33m[0.000ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 15:11:35 [32m
+[0m[33m[0.741ms] [34;1m[rows:-][0m SELECT count(*) FROM INFORMATION_SCHEMA.table_constraints WHERE constraint_schema = 'gin-server' AND table_name = 'users' AND constraint_name = 'uni_users_mobile'
+
+2024/02/22 15:11:35 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 15:11:35 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.518ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 15:11:35 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.163ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'gin-server' AND table_name = 'users' AND index_name = 'idx_users_deleted_at'
+
+2024/02/22 15:11:35 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.518ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 15:11:35 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 15:11:35 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.554ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'gin-server' AND table_name = 'media' AND table_type = 'BASE TABLE'
+
+2024/02/22 15:11:35 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 15:11:35 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 15:11:35 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.611ms] [34;1m[rows:-][0m SELECT * FROM `media` LIMIT 1
+
+2024/02/22 15:11:35 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.661ms] [34;1m[rows:-][0m SELECT column_name, column_default, is_nullable = 'YES', data_type, character_maximum_length, column_type, column_key, extra, column_comment, numeric_precision, numeric_scale FROM information_schema.columns WHERE table_schema = 'gin-server' AND table_name = 'media' ORDER BY ORDINAL_POSITION
+
+2024/02/22 15:11:35 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 15:11:35 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.571ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 15:11:35 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.642ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'gin-server' AND table_name = 'media' AND index_name = 'idx_media_disk_type'
+
+2024/02/22 15:11:35 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.504ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 15:11:35 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.339ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 15:11:35 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.556ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'gin-server' AND table_name = 'media' AND index_name = 'idx_media_deleted_at'
+
+2024/02/22 15:16:41 [32mF:/Project/my-admin/go-backend/dao/user.go:24
+[0m[33m[0.544ms] [34;1m[rows:1][0m SELECT * FROM `users` WHERE mobile = '13812341234' AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
+
+2024/02/22 15:16:55 [32mF:/Project/my-admin/go-backend/dao/user.go:24
+[0m[33m[1.568ms] [34;1m[rows:1][0m SELECT * FROM `users` WHERE mobile = '13812341234' AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
+
+2024/02/22 15:23:22 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 15:23:22 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.992ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 15:23:22 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[1.224ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'gin-server' AND table_name = 'users' AND table_type = 'BASE TABLE'
+
+2024/02/22 15:23:22 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 15:23:22 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.577ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 15:23:22 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT * FROM `users` LIMIT 1
+
+2024/02/22 15:23:22 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.800ms] [34;1m[rows:-][0m SELECT column_name, column_default, is_nullable = 'YES', data_type, character_maximum_length, column_type, column_key, extra, column_comment, numeric_precision, numeric_scale FROM information_schema.columns WHERE table_schema = 'gin-server' AND table_name = 'users' ORDER BY ORDINAL_POSITION
+
+2024/02/22 15:23:22 [32m
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 15:23:22 [32m
+[0m[33m[0.526ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 15:23:22 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.734ms] [34;1m[rows:4][0m 
+SELECT
+	TABLE_NAME,
+	COLUMN_NAME,
+	INDEX_NAME,
+	NON_UNIQUE 
+FROM
+	information_schema.STATISTICS 
+WHERE
+	TABLE_SCHEMA = 'gin-server' 
+	AND TABLE_NAME = 'users' 
+ORDER BY
+	INDEX_NAME,
+	SEQ_IN_INDEX
+
+2024/02/22 15:23:22 [32m
+[0m[33m[0.519ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 15:23:22 [32m
+[0m[33m[0.085ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 15:23:22 [32m
+[0m[33m[0.810ms] [34;1m[rows:-][0m SELECT count(*) FROM INFORMATION_SCHEMA.table_constraints WHERE constraint_schema = 'gin-server' AND table_name = 'users' AND constraint_name = 'uni_users_mobile'
+
+2024/02/22 15:23:22 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 15:23:22 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.520ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 15:23:22 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.518ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'gin-server' AND table_name = 'users' AND index_name = 'idx_users_deleted_at'
+
+2024/02/22 15:23:22 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 15:23:22 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.519ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 15:23:22 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'gin-server' AND table_name = 'media' AND table_type = 'BASE TABLE'
+
+2024/02/22 15:23:22 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.548ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 15:23:22 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.483ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 15:23:22 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.504ms] [34;1m[rows:-][0m SELECT * FROM `media` LIMIT 1
+
+2024/02/22 15:23:22 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[1.686ms] [34;1m[rows:-][0m SELECT column_name, column_default, is_nullable = 'YES', data_type, character_maximum_length, column_type, column_key, extra, column_comment, numeric_precision, numeric_scale FROM information_schema.columns WHERE table_schema = 'gin-server' AND table_name = 'media' ORDER BY ORDINAL_POSITION
+
+2024/02/22 15:23:22 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 15:23:22 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.787ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 15:23:22 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.648ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'gin-server' AND table_name = 'media' AND index_name = 'idx_media_disk_type'
+
+2024/02/22 15:23:22 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.504ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 15:23:22 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 15:23:22 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[1.018ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'gin-server' AND table_name = 'media' AND index_name = 'idx_media_deleted_at'
+
+2024/02/22 15:23:37 [32mF:/Project/my-admin/go-backend/dao/user.go:24
+[0m[33m[1.635ms] [34;1m[rows:1][0m SELECT * FROM `users` WHERE mobile = '13812341234' AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
+
+2024/02/22 16:14:07 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 16:14:07 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.878ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 16:14:07 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[1.152ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'gin-server' AND table_name = 'users' AND table_type = 'BASE TABLE'
+
+2024/02/22 16:14:07 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 16:14:07 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.058ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 16:14:07 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.614ms] [34;1m[rows:-][0m SELECT * FROM `users` LIMIT 1
+
+2024/02/22 16:14:07 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.508ms] [34;1m[rows:-][0m SELECT column_name, column_default, is_nullable = 'YES', data_type, character_maximum_length, column_type, column_key, extra, column_comment, numeric_precision, numeric_scale FROM information_schema.columns WHERE table_schema = 'gin-server' AND table_name = 'users' ORDER BY ORDINAL_POSITION
+
+2024/02/22 16:14:07 [32m
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 16:14:07 [32m
+[0m[33m[0.000ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 16:14:07 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.527ms] [34;1m[rows:4][0m 
+SELECT
+	TABLE_NAME,
+	COLUMN_NAME,
+	INDEX_NAME,
+	NON_UNIQUE 
+FROM
+	information_schema.STATISTICS 
+WHERE
+	TABLE_SCHEMA = 'gin-server' 
+	AND TABLE_NAME = 'users' 
+ORDER BY
+	INDEX_NAME,
+	SEQ_IN_INDEX
+
+2024/02/22 16:14:07 [32m
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 16:14:07 [32m
+[0m[33m[0.000ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 16:14:07 [32m
+[0m[33m[0.888ms] [34;1m[rows:-][0m SELECT count(*) FROM INFORMATION_SCHEMA.table_constraints WHERE constraint_schema = 'gin-server' AND table_name = 'users' AND constraint_name = 'uni_users_mobile'
+
+2024/02/22 16:14:07 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 16:14:07 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.732ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 16:14:07 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'gin-server' AND table_name = 'users' AND index_name = 'idx_users_deleted_at'
+
+2024/02/22 16:14:07 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.606ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 16:14:07 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.338ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 16:14:07 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.576ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'gin-server' AND table_name = 'media' AND table_type = 'BASE TABLE'
+
+2024/02/22 16:14:07 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.091ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 16:14:07 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.263ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 16:14:07 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT * FROM `media` LIMIT 1
+
+2024/02/22 16:14:07 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.629ms] [34;1m[rows:-][0m SELECT column_name, column_default, is_nullable = 'YES', data_type, character_maximum_length, column_type, column_key, extra, column_comment, numeric_precision, numeric_scale FROM information_schema.columns WHERE table_schema = 'gin-server' AND table_name = 'media' ORDER BY ORDINAL_POSITION
+
+2024/02/22 16:14:07 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.411ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 16:14:07 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.371ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 16:14:07 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'gin-server' AND table_name = 'media' AND index_name = 'idx_media_disk_type'
+
+2024/02/22 16:14:07 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.528ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 16:14:07 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 16:14:07 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.629ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'gin-server' AND table_name = 'media' AND index_name = 'idx_media_deleted_at'
+
+2024/02/22 16:18:31 [32mF:/Project/my-admin/go-backend/dao/user.go:24
+[0m[33m[1.450ms] [34;1m[rows:1][0m SELECT * FROM `users` WHERE mobile = '13812341234' AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
+
+2024/02/22 16:19:43 [32mF:/Project/my-admin/go-backend/dao/user.go:24
+[0m[33m[0.530ms] [34;1m[rows:1][0m SELECT * FROM `users` WHERE mobile = '13812341234' AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
+
+2024/02/22 19:05:13 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 19:05:13 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[1.446ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 19:05:13 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.648ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'gin-server' AND table_name = 'users' AND table_type = 'BASE TABLE'
+
+2024/02/22 19:05:13 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.503ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 19:05:13 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.061ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 19:05:13 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.624ms] [34;1m[rows:-][0m SELECT * FROM `users` LIMIT 1
+
+2024/02/22 19:05:13 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.525ms] [34;1m[rows:-][0m SELECT column_name, column_default, is_nullable = 'YES', data_type, character_maximum_length, column_type, column_key, extra, column_comment, numeric_precision, numeric_scale FROM information_schema.columns WHERE table_schema = 'gin-server' AND table_name = 'users' ORDER BY ORDINAL_POSITION
+
+2024/02/22 19:05:13 [32m
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 19:05:13 [32m
+[0m[33m[0.503ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 19:05:13 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[1.423ms] [34;1m[rows:4][0m 
+SELECT
+	TABLE_NAME,
+	COLUMN_NAME,
+	INDEX_NAME,
+	NON_UNIQUE 
+FROM
+	information_schema.STATISTICS 
+WHERE
+	TABLE_SCHEMA = 'gin-server' 
+	AND TABLE_NAME = 'users' 
+ORDER BY
+	INDEX_NAME,
+	SEQ_IN_INDEX
+
+2024/02/22 19:05:13 [32m
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 19:05:13 [32m
+[0m[33m[0.594ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 19:05:13 [32m
+[0m[33m[0.778ms] [34;1m[rows:-][0m SELECT count(*) FROM INFORMATION_SCHEMA.table_constraints WHERE constraint_schema = 'gin-server' AND table_name = 'users' AND constraint_name = 'uni_users_mobile'
+
+2024/02/22 19:05:13 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 19:05:13 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.821ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 19:05:13 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.505ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'gin-server' AND table_name = 'users' AND index_name = 'idx_users_deleted_at'
+
+2024/02/22 19:05:13 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 19:05:13 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.648ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 19:05:13 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.504ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'gin-server' AND table_name = 'media' AND table_type = 'BASE TABLE'
+
+2024/02/22 19:05:13 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 19:05:13 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.503ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 19:05:13 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT * FROM `media` LIMIT 1
+
+2024/02/22 19:05:13 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.749ms] [34;1m[rows:-][0m SELECT column_name, column_default, is_nullable = 'YES', data_type, character_maximum_length, column_type, column_key, extra, column_comment, numeric_precision, numeric_scale FROM information_schema.columns WHERE table_schema = 'gin-server' AND table_name = 'media' ORDER BY ORDINAL_POSITION
+
+2024/02/22 19:05:13 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.505ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 19:05:13 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 19:05:13 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.275ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'gin-server' AND table_name = 'media' AND index_name = 'idx_media_disk_type'
+
+2024/02/22 19:05:13 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 19:05:13 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.614ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 19:05:13 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.503ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'gin-server' AND table_name = 'media' AND index_name = 'idx_media_deleted_at'
+
+2024/02/22 19:10:49 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 19:10:49 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[1.212ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 19:10:49 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[1.070ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'gin-server' AND table_name = 'users' AND table_type = 'BASE TABLE'
+
+2024/02/22 19:10:49 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 19:10:49 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.503ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 19:10:49 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.590ms] [34;1m[rows:-][0m SELECT * FROM `users` LIMIT 1
+
+2024/02/22 19:10:49 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.569ms] [34;1m[rows:-][0m SELECT column_name, column_default, is_nullable = 'YES', data_type, character_maximum_length, column_type, column_key, extra, column_comment, numeric_precision, numeric_scale FROM information_schema.columns WHERE table_schema = 'gin-server' AND table_name = 'users' ORDER BY ORDINAL_POSITION
+
+2024/02/22 19:10:49 [32m
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 19:10:49 [32m
+[0m[33m[0.544ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 19:10:49 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.544ms] [34;1m[rows:4][0m 
+SELECT
+	TABLE_NAME,
+	COLUMN_NAME,
+	INDEX_NAME,
+	NON_UNIQUE 
+FROM
+	information_schema.STATISTICS 
+WHERE
+	TABLE_SCHEMA = 'gin-server' 
+	AND TABLE_NAME = 'users' 
+ORDER BY
+	INDEX_NAME,
+	SEQ_IN_INDEX
+
+2024/02/22 19:10:49 [32m
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 19:10:49 [32m
+[0m[33m[0.000ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 19:10:49 [32m
+[0m[33m[0.790ms] [34;1m[rows:-][0m SELECT count(*) FROM INFORMATION_SCHEMA.table_constraints WHERE constraint_schema = 'gin-server' AND table_name = 'users' AND constraint_name = 'uni_users_mobile'
+
+2024/02/22 19:10:49 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 19:10:49 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.521ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 19:10:49 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.556ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'gin-server' AND table_name = 'users' AND index_name = 'idx_users_deleted_at'
+
+2024/02/22 19:10:49 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 19:10:49 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 19:10:49 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.766ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = 'gin-server' AND table_name = 'media' AND table_type = 'BASE TABLE'
+
+2024/02/22 19:10:49 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 19:10:49 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.605ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 19:10:49 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT * FROM `media` LIMIT 1
+
+2024/02/22 19:10:49 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.529ms] [34;1m[rows:-][0m SELECT column_name, column_default, is_nullable = 'YES', data_type, character_maximum_length, column_type, column_key, extra, column_comment, numeric_precision, numeric_scale FROM information_schema.columns WHERE table_schema = 'gin-server' AND table_name = 'media' ORDER BY ORDINAL_POSITION
+
+2024/02/22 19:10:49 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 19:10:49 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.612ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 19:10:49 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.531ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'gin-server' AND table_name = 'media' AND index_name = 'idx_media_disk_type'
+
+2024/02/22 19:10:49 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:-][0m SELECT DATABASE()
+
+2024/02/22 19:10:49 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.000ms] [34;1m[rows:1][0m SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gin-server%' ORDER BY SCHEMA_NAME='gin-server' DESC,SCHEMA_NAME limit 1
+
+2024/02/22 19:10:49 [32mF:/Project/my-admin/go-backend/initialize/database.go:123
+[0m[33m[0.503ms] [34;1m[rows:-][0m SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'gin-server' AND table_name = 'media' AND index_name = 'idx_media_deleted_at'
+
+2024/02/22 19:14:04 [32mF:/Project/my-admin/go-backend/dao/user.go:24
+[0m[33m[0.504ms] [34;1m[rows:1][0m SELECT * FROM `users` WHERE mobile = '13812341234' AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
+
+2024/02/22 19:15:29 [32mF:/Project/my-admin/go-backend/dao/user.go:15
+[0m[33m[0.701ms] [34;1m[rows:1][0m SELECT * FROM `users` WHERE `users`.`id` = 1 AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
