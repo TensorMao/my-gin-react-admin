@@ -1,19 +1,34 @@
 .userInfo {
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
-  justify-content: space-between; // 让子元素在容器中平均分布
   width: 100%; // 让子元素填充 Header 宽度
   height: 95%;
   padding: 10px;
   // 欢迎文本样式
-  .welcome {
-    margin-right: 20px;
+  h3{
+    margin: 10px;
+    font-weight: normal;
   }
 
-  // 按钮样式
-  .button {
-    margin-left: 20px;
+
+  .right{
+    display: flex; /* 将 h2 和 span 放置在一行 */
+    align-items: center; /* 垂直居中对齐 */
+    .welcome {
+      margin-right: 20px;
+    }
+
+    // 按钮样式
+    .button {
+      margin: 10px;
+
+    }
+
   }
+
+
 }
 
 

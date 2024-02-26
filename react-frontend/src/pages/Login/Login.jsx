@@ -5,6 +5,8 @@ import Logo from '../../assets/images/logo512.png'
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
 import storageUtils from "../../utils/storageUtils";
+import memoryUtils from "../../utils/memoryUtils";
+import {reqLogin} from "../../api";
 
 
 
@@ -12,13 +14,13 @@ function Login (){
     const navigate=useNavigate()
     const onFinish = async  (values) => {
         try {
-            const res=await axios.post('login', {
-               mobile: values.mobile,
-                password: values.password
-            });
+            const res=await reqLogin(values.mobile,values.password)
             if(res.status===200){
                 const user=res.data
+               //保存用户
                 storageUtils.saveUser(user)
+                memoryUtils.user=user
+
                 navigate('/home')
                 message.success("Succeeded to login.")
            }

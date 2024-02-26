@@ -1,16 +1,26 @@
+@charset "UTF-8";
 .userInfo {
   display: flex;
-  align-items: center;
+  flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   height: 95%;
   padding: 10px;
 }
-.userInfo .welcome {
+.userInfo h3 {
+  margin: 10px;
+  font-weight: normal;
+}
+.userInfo .right {
+  display: flex; /* 将 h2 和 span 放置在一行 */
+  align-items: center; /* 垂直居中对齐 */
+}
+.userInfo .right .welcome {
   margin-right: 20px;
 }
-.userInfo .button {
-  margin-left: 20px;
+.userInfo .right .button {
+  margin: 10px;
 }
 
 /*# sourceMappingURL=MyHeader.css.map */

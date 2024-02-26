@@ -31,5 +31,20 @@ const menuList=[
     },
 
 ]
+function findLabelByKey(menuList, currentPath) {
+    for (let i = 0; i < menuList.length; i++) {
+        const menuItem = menuList[i];
+        if (menuItem.key === currentPath) {
+            return menuItem.label;
+        }
+        if (menuItem.children) {
+            const foundInChildren = findLabelByKey(menuItem.children, currentPath);
+            if (foundInChildren) {
+                return foundInChildren;
+            }
+        }
+    }
+    return null;
+}
 
-export default menuList
+export  {menuList ,findLabelByKey};

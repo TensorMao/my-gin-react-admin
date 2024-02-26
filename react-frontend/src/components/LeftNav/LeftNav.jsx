@@ -1,9 +1,8 @@
 import React, {useState} from 'react'
 import {Layout, Menu} from "antd";
 
-import './LeftNav.css'
-import menuList from "./menConfig";
 import { useNavigate} from "react-router-dom";
+import {menuList} from "./menConfig";
 
 export default function LeftNav (props) {
     const {Sider } = Layout;
